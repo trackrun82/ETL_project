@@ -1,6 +1,6 @@
 # ETL_project
 
-The goal of this project was to form a database out of *at least 2* data sources by **E**(xtracting), **T**ransforming and **L**oading the data.
+The goal of this project was to form a database out of *at least 2* data sources by **E**xtracting, **T**ransforming and **L**oading the data.
 
 ### Project Proposal
 [ETL Project Proposal](https://github.com/trackrun82/ETL_project/blob/master/ETL%20Project%20proposal.docx) - initial proposal submitted for approval
