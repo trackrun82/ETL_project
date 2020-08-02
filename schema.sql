@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS movie_person_title_junction;
 DROP TABLE IF EXISTS movie_genre_junction;
 DROP TABLE IF EXISTS movie_language_junction;
 DROP TABLE IF EXISTS movie_country_junction;
-DROP TABLE IF EXISTS production_company;
 DROP TABLE IF EXISTS movie;
+DROP TABLE IF EXISTS production_company;
 DROP TABLE IF EXISTS person;
 DROP TABLE IF EXISTS job_title;
 DROP TABLE IF EXISTS country_origin;
@@ -15,7 +15,6 @@ DROP TABLE IF EXISTS genre;
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/D9jGD3
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
-
 CREATE TABLE "movie" (
     "movie_id" VARCHAR(100)   NOT NULL,
     "movie_title" text   NOT NULL,
@@ -24,10 +23,18 @@ CREATE TABLE "movie" (
     "description" text,
     "votes_count" int,
     "votes_avg" double precision,
---     "company_id" VARCHAR(100)   NOT NULL,
-    CONSTRAINT "pk_movie" PRIMARY KEY (
+	"company_id" VARCHAR(100),
+	CONSTRAINT "pk_movie" PRIMARY KEY (
         "movie_id"
      )
+);
+
+CREATE TABLE "production_company" (
+	"company_id" VARCHAR(100)   NOT NULL,
+	"company_name" VARCHAR(255),
+	CONSTRAINT "pk_production_company" PRIMARY KEY (
+		"company_id"
+	)
 );
 
 CREATE TABLE "person" (
@@ -76,8 +83,8 @@ CREATE TABLE "movie_genre_junction" (
 );
 
 CREATE TABLE "country_origin" (
-    "country_id" VARCHAR(100)   NOT NULL,
-    "country_name" VARCHAR(100)   NOT NULL,
+    "country_id" INT   NOT NULL,
+    "country_name" VARCHAR(100),
     CONSTRAINT "pk_country_origin" PRIMARY KEY (
         "country_id"
      )
@@ -85,15 +92,15 @@ CREATE TABLE "country_origin" (
 
 CREATE TABLE "movie_country_junction" (
     "movie_id" VARCHAR(100)   NOT NULL,
-    "country_id" VARCHAR(100)   NOT NULL,
+    "country_id" INT   NOT NULL,
     CONSTRAINT "pk_movie_country_junction" PRIMARY KEY (
         "movie_id","country_id"
      )
 );
 
 CREATE TABLE "language" (
-    "language_id" VARCHAR(100)   NOT NULL,
-    "language" VARCHAR(100)   NOT NULL,
+    "language_id" INT   NOT NULL,
+    "language" VARCHAR(100),
     CONSTRAINT "pk_language" PRIMARY KEY (
         "language_id"
      )
@@ -101,19 +108,14 @@ CREATE TABLE "language" (
 
 CREATE TABLE "movie_language_junction" (
     "movie_id" VARCHAR(100)   NOT NULL,
-    "language_id" VARCHAR(100)   NOT NULL,
+    "language_id" INT   NOT NULL,
     CONSTRAINT "pk_movie_language_junction" PRIMARY KEY (
         "movie_id","language_id"
      )
 );
 
-CREATE TABLE "production_company" (
-	"company_id" VARCHAR(100)   NOT NULL,
-	"company_name" VARCHAR(255)   NOT NULL,
-	CONSTRAINT "pk_production_company" PRIMARY KEY (
-		"company_id"
-	)
-);
+ALTER TABLE "movie" ADD CONSTRAINT "fk_movie_company_id" FOREIGN KEY("company_id")
+REFERENCES "production_company" ("company_id");
 
 ALTER TABLE "movie_person_title_junction" ADD CONSTRAINT "fk_movie_person_title_junction_movie_id" FOREIGN KEY("movie_id")
 REFERENCES "movie" ("movie_id");
@@ -141,8 +143,5 @@ REFERENCES "movie" ("movie_id");
 
 ALTER TABLE "movie_language_junction" ADD CONSTRAINT "fk_movie_language_junction_language_id" FOREIGN KEY("language_id")
 REFERENCES "language" ("language_id");
-
--- ALTER TABLE "production_company" ADD CONSTRAINT "fk_production_company_company_id" FOREIGN KEY("company_id")
--- REFERENCES "movie" ("company_id");
 
 

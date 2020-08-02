@@ -1,4 +1,5 @@
 -- Query to check successful load
+SELECT * FROM production_company;
 SELECT * FROM movie;
 SELECT * FROM person;
 SELECT * FROM job_title;
@@ -9,7 +10,6 @@ SELECT * FROM language;
 SELECT * FROM movie_language_junction;
 SELECT * FROM genre;
 SELECT * FROM movie_genre_junction;
-SELECT * FROM production_company;
 
 -- Join tables on movie_id
 SELECT movie.movie_id, movie.movie_title, movie_person_title_junction.person_id
