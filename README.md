@@ -30,9 +30,9 @@ A folder named 'data' was created in the main project folder and these files wer
 * 'secret.py' file was created in main project folder to store username and password for PostgreSQL
 * [Main_ETL_project2](https://github.com/trackrun82/ETL_project/blob/master/Main_ETL_project2.ipynb) - final combination of transform and load code for movie_db
 
-### pgAdmin
+### Back to pgAdmin 
 * Additional Query Tool was opened and [query](https://github.com/trackrun82/ETL_project/blob/master/query.sql) file was opened to verify each table had data
 * Simple join was run to verify tables were working properly
 
 ### Final Project Report
-[Movie_IMDB_Database_ETL_Team5](https://github.com/trackrun82/ETL_project/blob/master/Movie_IMDB_Database_ETL_Team5.docx) - final report detailing how each part of E(tract), T(ransform), and L(oad) was used to form the relational database 'movies_db'
+[Movie_IMDB_Database_ETL_Team5](https://github.com/trackrun82/ETL_project/blob/master/Movie_IMDB_Database_ETL_Team5.docx) - final report detailing how each part of **E**(xtract), **T**(ransform), and **L**(oad) was used to form the relational database 'movies_db'
