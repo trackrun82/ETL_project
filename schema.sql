@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS movie_person_title_junction;
 DROP TABLE IF EXISTS movie_genre_junction;
+DROP TABLE IF EXISTS movie_person_title_junction;
+DROP TABLE IF EXISTS movie_genre_junction;
 DROP TABLE IF EXISTS movie_language_junction;
 DROP TABLE IF EXISTS movie_country_junction;
 DROP TABLE IF EXISTS movie;
@@ -143,5 +145,4 @@ REFERENCES "movie" ("movie_id");
 
 ALTER TABLE "movie_language_junction" ADD CONSTRAINT "fk_movie_language_junction_language_id" FOREIGN KEY("language_id")
 REFERENCES "language" ("language_id");
-
 
